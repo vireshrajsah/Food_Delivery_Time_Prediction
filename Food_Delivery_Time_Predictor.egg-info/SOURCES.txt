@@ -1,0 +1,7 @@
+README.md
+setup.py
+Food_Delivery_Time_Predictor.egg-info/PKG-INFO
+Food_Delivery_Time_Predictor.egg-info/SOURCES.txt
+Food_Delivery_Time_Predictor.egg-info/dependency_links.txt
+Food_Delivery_Time_Predictor.egg-info/requires.txt
+Food_Delivery_Time_Predictor.egg-info/top_level.txt

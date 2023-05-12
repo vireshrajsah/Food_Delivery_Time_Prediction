@@ -1,0 +1,16 @@
+category_encoders
+copy
+datetime
+Flask
+geopy
+logging
+matplotlib
+numpy
+pandas
+pickle
+re
+seaborn
+shelve
+sklearn
+statsmodels
+-e .
