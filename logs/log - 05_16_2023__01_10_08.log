@@ -1,0 +1,96 @@
+[ 2023-05-16 01:10:09,784 ] 22 root - INFO: PREDICTION PIPELINE INITIATED
+[ 2023-05-16 01:10:09,793 ] 26 root - INFO: INPUT OBTAINED AS [{'ID': 0, 'Delivery_person_ID': 'JAPRES06DEL01', 'Delivery_person_Age': 34, 'Delivery_person_Ratings': 3.5, 'Restaurant_latitude': 26.911927, 'Restaurant_longitude': 75.797282, 'Delivery_location_latitude': 26.951927, 'Delivery_location_longitude': 75.837282, 'Order_Date': '02-04-2022', 'Time_Orderd': '19:20', 'Time_Order_picked': '19:25', 'Weather_conditions': 'Stormy', 'Road_traffic_density': 'Medium', 'Vehicle_condition': 0, 'Type_of_order': 'Meal', 'Type_of_vehicle': 'scooter', 'multiple_deliveries': 1.0, 'Festival': 'Yes', 'City': 'Metropolitian'}]
+[ 2023-05-16 01:10:09,794 ] 19 root - INFO: Input values ingestion INITIATED
+[ 2023-05-16 01:10:09,796 ] 23 root - INFO: input dictionary loaded as a dataframe
+[ 2023-05-16 01:10:09,796 ] 26 root - INFO: CALLING utils for cleaning in Predictor.ingest at prediction.py
+[ 2023-05-16 01:10:09,796 ] 29 root - INFO: df RECEIVED for cleaning in clean() at data_preparation_utils.py, shape: (1, 19)
+[ 2023-05-16 01:10:09,797 ] 31 root - INFO: ID column dropped
+[ 2023-05-16 01:10:09,799 ] 39 root - INFO: Records with faulty time dropped
+[ 2023-05-16 01:10:09,822 ] 41 root - INFO: df cleaning COMPLETE in clean() at data_preparation_utils.py, shape: (1, 18), and returned
+        Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival           City
+values      JAPRES06DEL01                   34                      3.5  ...                  1.0       Yes  Metropolitian
+
+[1 rows x 18 columns]
+[ 2023-05-16 01:10:09,841 ] 28 root - INFO: RECEIVED 
+       Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival           City
+values      JAPRES06DEL01                   34                      3.5  ...                  1.0       Yes  Metropolitian
+
+[1 rows x 18 columns]
+[ 2023-05-16 01:10:09,841 ] 29 root - INFO: RECEIVED input dataframe cleaned, with shape (1, 18)
+[ 2023-05-16 01:10:09,841 ] 32 root - INFO: CALLING utils for feature engineering in Predictor.ingest at prediction.py, shape (1, 18)
+[ 2023-05-16 01:10:09,841 ] 89 root - INFO: df received for Feature engineering, shape: (1, 18) in apply_feature_engineering() at data_preparation_utils.py
+[ 2023-05-16 01:10:09,843 ] 92 root - INFO: Time_Orderd and Time_Order_picked columns converted to hours
+[ 2023-05-16 01:10:09,844 ] 97 root - INFO: Order_Date split to Order_Day and Order_Month
+[ 2023-05-16 01:10:09,846 ] 103 root - INFO: Geo_Distance column added
+[ 2023-05-16 01:10:09,846 ] 105 root - INFO: df feature engineering steps complete in apply_feature_engineering() at data_preparation_utils.py, shape: (1, 20), and returned
+[ 2023-05-16 01:10:09,846 ] 34 root - INFO: RECEIVED input dataframe feature engineered
+[ 2023-05-16 01:10:09,846 ] 37 root - INFO: CALLING utils for transformation in Predictor.ingest at prediction.py
+[ 2023-05-16 01:10:09,846 ] 124 root - INFO: df RECEIVED for transformation in fit_to_transformations() at data_transformation_utils.py, train_shape:(1, 20)
+[ 2023-05-16 01:10:09,847 ] 77 root - INFO: fetch request for [imputer] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,861 ] 85 root - INFO: object [ColumnTransformer(transformers=[('numeric_imputer',
+                                 SimpleImputer(strategy='median'),
+                                 ['Delivery_person_Age',
+                                  'Delivery_person_Ratings',
+                                  'Restaurant_latitude', 'Restaurant_longitude',
+                                  'Delivery_location_latitude',
+                                  'Delivery_location_longitude', 'Time_Orderd',
+                                  'Time_Order_picked', 'Vehicle_condition',
+                                  'multiple_deliveries', 'Order_Day',
+                                  'Order_Month', 'Geo_Distance']),
+                                ('categoric_imputation',
+                                 SimpleImputer(strategy='most_frequent'),
+                                 ['Delivery_person_ID', 'Weather_conditions',
+                                  'Road_traffic_density', 'Type_of_order',
+                                  'Type_of_vehicle', 'Festival', 'City'])])] of type [<class 'sklearn.compose._column_transformer.ColumnTransformer'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,867 ] 138 root - INFO: imputation completed at data_transformation_utils.py, train_shape:(1, 20)
+ number of train columns with null values [0]
+[ 2023-05-16 01:10:09,867 ] 77 root - INFO: fetch request for [encoder_Delivery_person_ID] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,873 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,875 ] 77 root - INFO: fetch request for [encoder_Road_traffic_density] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,877 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,878 ] 77 root - INFO: fetch request for [encoder_Type_of_vehicle] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,880 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,880 ] 77 root - INFO: fetch request for [encoder_City] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,882 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,883 ] 77 root - INFO: fetch request for [encoder_Weather_conditions] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,885 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,885 ] 77 root - INFO: fetch request for [encoder_Type_of_order] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,887 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,887 ] 77 root - INFO: fetch request for [encoder_Festival] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,889 ] 85 root - INFO: object [LabelEncoder()] of type [<class 'sklearn.preprocessing._label.LabelEncoder'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,890 ] 150 root - INFO: encoding completed at data_transformation_utils.py, train_shape:(1, 20)
+[ 2023-05-16 01:10:09,908 ] 151 root - INFO: X:
+       Delivery_person_Age Delivery_person_Ratings Restaurant_latitude Restaurant_longitude  ... Type_of_order Type_of_vehicle Festival City
+values                34.0                     3.5           26.911927            75.797282  ...             2               2        1    0
+
+[1 rows x 20 columns]
+[ 2023-05-16 01:10:09,909 ] 77 root - INFO: fetch request for [scaler] RECEIVED in get_preprocessor_from_shelve() at general_utils.py
+[ 2023-05-16 01:10:09,911 ] 85 root - INFO: object [ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 ['Delivery_person_Age',
+                                  'Delivery_person_Ratings',
+                                  'Restaurant_latitude', 'Restaurant_longitude',
+                                  'Delivery_location_latitude',
+                                  'Delivery_location_longitude', 'Time_Orderd',
+                                  'Time_Order_picked', 'Vehicle_condition',
+                                  'multiple_deliveries', 'Order_Day',
+                                  'Order_Month', 'Geo_Distance',
+                                  'Delivery_person_ID', 'Weather_conditions',
+                                  'Road_traffic_density', 'Type_of_order',
+                                  'Type_of_vehicle', 'Festival', 'City'])])] of type [<class 'sklearn.compose._column_transformer.ColumnTransformer'>] retrieved and RETURNED from preprosessor shelve
+[ 2023-05-16 01:10:09,915 ] 160 root - INFO: scaling completed at data_transformation_utils.py
+[ 2023-05-16 01:10:09,915 ] 162 root - INFO: dfs fit-transformation COMPLETED in fit_to_transformations() at data_transformation_utils.py, train_shape:(1, 20)
+[ 2023-05-16 01:10:09,915 ] 39 root - INFO: RECEIVED input dataframe transformed
+[ 2023-05-16 01:10:09,915 ] 42 root - INFO: data ingestion and transformation COMPLETED in Predictor.ingest at prediction.py
+[ 2023-05-16 01:10:09,915 ] 30 root - INFO: PREDICTOR INITIALIZED WITH INPUT
+[ 2023-05-16 01:10:09,915 ] 53 root - INFO: prediction INITIATED in Predictor.predict() at prediction.py
+[ 2023-05-16 01:10:09,915 ] 107 root - INFO: fetch request for [model] RECEIVED in load_model() at general_utils.py
+[ 2023-05-16 01:10:09,916 ] 115 root - INFO: model object of type [<class 'sklearn.linear_model._base.LinearRegression'>] retrived and RETURNED from load_model() at general_utils.py
+[ 2023-05-16 01:10:09,916 ] 57 root - INFO: model with type [<class 'sklearn.linear_model._base.LinearRegression'>] and parameters [{'copy_X': True, 'fit_intercept': True, 'n_jobs': None, 'positive': False} loaded in Predictor.predict() at prediction.py]
+[ 2023-05-16 01:10:09,934 ] 60 root - INFO: output for: 
+[        Delivery_person_Age  Delivery_person_Ratings  Restaurant_latitude  Restaurant_longitude  ...  Type_of_order  Type_of_vehicle  Festival      City
+values             0.766417                -3.602986             1.255473              0.237744  ...       0.433159         1.270973  7.043444 -0.538163
+
+[1 rows x 20 columns]]
+ predicted as [[45.41701065]]; Prediction COMPLETED in Predictor.predict() at prediction.py
+[ 2023-05-16 01:10:09,935 ] 34 root - INFO: OUTPUT OBTAINED [[45.41701065]]
+[ 2023-05-16 01:10:09,935 ] 36 root - INFO: PREDICTION PIPELINE COMPLETED SUCCESSFULLY

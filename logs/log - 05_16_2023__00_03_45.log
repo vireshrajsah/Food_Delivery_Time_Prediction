@@ -1,0 +1,16 @@
+[ 2023-05-16 00:03:47,289 ] 22 root - INFO: PREDICTION PIPELINE INITIATED
+[ 2023-05-16 00:03:47,958 ] 26 root - INFO: INPUT OBTAINED AS [{'ID': 0, 'Delivery_person_ID': 'DEHRES17DEL01', ' Delivery_person_Age': 34, ' Delivery_person_Ratings': 3.5, ' Restaurant_latitude': 30.327968, ' Restaurant_longitude': 78.046106, 'Delivery_location_latitude': 30.397968, 'Delivery_location_longitude': 78.116106, 'Order_Date': '5-15-2023', 'Time_Orderd': '7:11:20', 'Time_Order_picked': '7:23:20', 'Weather_conditions': 'Stormy', 'Road_traffic_density': 'Medium', 'Vehicle_condition': 0, 'Type_of_order': 'Meal', 'Type_of_vehicle': 'scooter', 'multiple_deliveries': 1.0, 'Festival': 'Yes', 'City': 'Metropolitan'}]
+[ 2023-05-16 00:03:47,959 ] 19 root - INFO: Input values ingestion INITIATED
+[ 2023-05-16 00:03:47,960 ] 23 root - INFO: input dictionary loaded as a dataframe
+[ 2023-05-16 00:03:47,960 ] 26 root - INFO: CALLING utils for cleaning in Predictor.ingest at prediction.py
+[ 2023-05-16 00:03:47,960 ] 29 root - INFO: df RECEIVED for cleaning in clean() at data_preparation_utils.py, shape: (1, 19)
+[ 2023-05-16 00:03:47,961 ] 31 root - INFO: ID column dropped
+[ 2023-05-16 00:03:47,962 ] 39 root - INFO: Records with faulty time dropped
+[ 2023-05-16 00:03:47,962 ] 41 root - INFO: df cleaning COMPLETE in clean() at data_preparation_utils.py, shape: (1, 18), and returned
+[ 2023-05-16 00:03:47,962 ] 28 root - INFO: RECEIVED input dataframe cleaned
+[ 2023-05-16 00:03:47,962 ] 31 root - INFO: CALLING utils for feature engineering in Predictor.ingest at prediction.py
+[ 2023-05-16 00:03:47,963 ] 89 root - INFO: df received for Feature engineering, shape: (0, 18) in apply_feature_engineering() at data_preparation_utils.py
+[ 2023-05-16 00:03:47,963 ] 92 root - INFO: Time_Orderd and Time_Order_picked columns converted to hours
+[ 2023-05-16 00:03:47,964 ] 97 root - INFO: Order_Date split to Order_Day and Order_Month
+[ 2023-05-16 00:03:47,965 ] 110 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils\data_preparation_utils.py] line no. [100] with message ["None of [Index(['Restaurant_latitude', 'Restaurant_longitude'], dtype='object')] are in the [columns]"]
+[ 2023-05-16 00:03:47,965 ] 45 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\components\prediction.py] line no. [32] with message [Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils\data_preparation_utils.py] line no. [100] with message ["None of [Index(['Restaurant_latitude', 'Restaurant_longitude'], dtype='object')] are in the [columns]"]]

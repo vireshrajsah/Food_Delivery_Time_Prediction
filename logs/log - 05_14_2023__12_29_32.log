@@ -1,0 +1,85 @@
+[ 2023-05-14 12:29:32,072 ] 29 root - INFO: Data ingestion initiated in ingest() at data_ingestion.py
+[ 2023-05-14 12:29:32,072 ] 25 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\dataset\food_delivery.csv] received in utils.read_csv
+[ 2023-05-14 12:29:32,332 ] 27 root - INFO: csv read and loaded
+[ 2023-05-14 12:29:32,372 ] 31 root - INFO: Input file loaded and returned to ingest() at data_ingestion.py, Dataframe shape: (45584, 20)
+       ID Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival           City  Time_taken (min)
+0  0xcdcd      DEHRES17DEL01                 36.0                      4.2  ...                  3.0        No  Metropolitian                46
+1  0xd987      KOCRES16DEL01                 21.0                      4.7  ...                  1.0        No  Metropolitian                23
+2  0x2784     PUNERES13DEL03                 23.0                      4.7  ...                  1.0        No  Metropolitian                21
+3  0xc8b6     LUDHRES15DEL02                 34.0                      4.3  ...                  0.0        No  Metropolitian                20
+4  0xdb64      KNPRES14DEL02                 24.0                      4.7  ...                  1.0        No  Metropolitian                41
+
+[5 rows x 20 columns]
+[ 2023-05-14 12:29:32,407 ] 34 root - INFO: Train_test_split achieved - train shape: [(31908, 20)], test shape [(13676, 20)]
+[ 2023-05-14 12:29:32,407 ] 42 root - INFO: Dataframe Received for saving. Shape: (31908, 20)
+[ 2023-05-14 12:29:34,559 ] 44 root - INFO: Dataframe saved as csv to path - [ C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\train.csv ]
+[ 2023-05-14 12:29:34,559 ] 37 root - INFO: Train csv saved and confirmed from DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 12:29:34,559 ] 42 root - INFO: Dataframe Received for saving. Shape: (13676, 20)
+[ 2023-05-14 12:29:34,780 ] 44 root - INFO: Dataframe saved as csv to path - [ C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\test.csv ]
+[ 2023-05-14 12:29:34,780 ] 39 root - INFO: Test csv saved and confirmed from DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 12:29:34,780 ] 41 root - INFO: Data ingestion completed in DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 12:29:34,793 ] 24 root - INFO: transformation INITIATED in Preprocessor.transform() at data_transformation.py
+[ 2023-05-14 12:29:34,793 ] 25 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\train.csv] received in utils.read_csv
+[ 2023-05-14 12:29:35,038 ] 27 root - INFO: csv read and loaded
+[ 2023-05-14 12:29:35,039 ] 25 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\test.csv] received in utils.read_csv
+[ 2023-05-14 12:29:35,160 ] 27 root - INFO: csv read and loaded
+[ 2023-05-14 12:29:35,160 ] 29 root - INFO: train and test csv loaded, train shape: (31908, 20), test shape: (13676, 20)
+[ 2023-05-14 12:29:35,160 ] 32 root - INFO: CALLING on utils to clean train and test dfs in Preprocessor.transform() at data_transformation.py, train shape: (31908, 20), test shape: (13676, 20)
+[ 2023-05-14 12:29:35,160 ] 74 root - INFO: df received for cleaning in clean() at utils.py, shape: (31908, 20)
+[ 2023-05-14 12:29:35,180 ] 76 root - INFO: ID column dropped
+[ 2023-05-14 12:29:35,346 ] 84 root - INFO: Records with faulty time dropped
+[ 2023-05-14 12:29:35,346 ] 86 root - INFO: df cleaning complete in clean() at utils.py, shape: (31908, 19), and returned
+[ 2023-05-14 12:29:35,346 ] 74 root - INFO: df received for cleaning in clean() at utils.py, shape: (13676, 20)
+[ 2023-05-14 12:29:35,352 ] 76 root - INFO: ID column dropped
+[ 2023-05-14 12:29:35,426 ] 84 root - INFO: Records with faulty time dropped
+[ 2023-05-14 12:29:35,427 ] 86 root - INFO: df cleaning complete in clean() at utils.py, shape: (13676, 19), and returned
+[ 2023-05-14 12:29:35,427 ] 35 root - INFO: clean train and test dfs RECEIVED in Preprocessor.transform() at data_transformation.py, train shape: (25061, 19), test shape: (10757, 19)
+[ 2023-05-14 12:29:35,427 ] 38 root - INFO: CALLING on utils to Feature Engineer train and test dfs in Preprocessor.transform() at data_transformation.py, train shape: (25061, 19), test shape: (10757, 19)
+[ 2023-05-14 12:29:35,427 ] 134 root - INFO: df received for Feature engineering, shape: (25061, 19) in apply_feature_engineering() at utils.py
+[ 2023-05-14 12:29:36,461 ] 137 root - INFO: Time_Orderd and Time_Order_picked columns converted to hours
+[ 2023-05-14 12:29:37,457 ] 142 root - INFO: Order_Date split to Order_Day and Order_Month
+[ 2023-05-14 12:29:46,873 ] 148 root - INFO: Geo_Distance column added
+[ 2023-05-14 12:29:46,873 ] 150 root - INFO: df feature engineering steps complete in apply_feature_engineering() at utils.py, shape: (25061, 21), and returned
+[ 2023-05-14 12:29:46,873 ] 134 root - INFO: df received for Feature engineering, shape: (10757, 19) in apply_feature_engineering() at utils.py
+[ 2023-05-14 12:29:47,264 ] 137 root - INFO: Time_Orderd and Time_Order_picked columns converted to hours
+[ 2023-05-14 12:29:47,666 ] 142 root - INFO: Order_Date split to Order_Day and Order_Month
+[ 2023-05-14 12:29:52,302 ] 148 root - INFO: Geo_Distance column added
+[ 2023-05-14 12:29:52,302 ] 150 root - INFO: df feature engineering steps complete in apply_feature_engineering() at utils.py, shape: (10757, 21), and returned
+[ 2023-05-14 12:29:52,303 ] 41 root - INFO: Feature Engineered train and test dfs RECEIVED in Preprocessor.transform() at data_transformation.py, train shape: (25061, 21), test shape: (10757, 21)
+[ 2023-05-14 12:29:52,316 ] 48 root - INFO: X-y split achieved
+[ 2023-05-14 12:29:52,316 ] 51 root - INFO: CALLING on utils to transform train and test dfs in Preprocessor.transform() at data_transformation.py, train shape: (25061, 21), test shape: (10757, 21)
+[ 2023-05-14 12:29:52,316 ] 194 root - INFO: dfs recieved for fit-transformation in apply_data_transformations() at utils.py, train_shape:(25061, 20), test_shape: (10757, 20)
+[ 2023-05-14 12:29:52,448 ] 52 root - INFO: ColumnTransformer(transformers=[('numeric_imputer',
+                                 SimpleImputer(strategy='median'),
+                                 ['Delivery_person_Age',
+                                  'Delivery_person_Ratings',
+                                  'Restaurant_latitude', 'Restaurant_longitude',
+                                  'Delivery_location_latitude',
+                                  'Delivery_location_longitude', 'Time_Orderd',
+                                  'Time_Order_picked', 'Vehicle_condition',
+                                  'multiple_deliveries', 'Order_Day',
+                                  'Order_Month', 'Geo_Distance']),
+                                ('categoric_imputation',
+                                 SimpleImputer(strategy='most_frequent'),
+                                 ['Delivery_person_ID', 'Weather_conditions',
+                                  'Road_traffic_density', 'Type_of_order',
+                                  'Type_of_vehicle', 'Festival', 'City'])]) received for shelving in shelve_this_preprocessor() at utils.py
+[ 2023-05-14 12:29:52,476 ] 62 root - INFO: [ColumnTransformer(transformers=[('numeric_imputer',
+                                 SimpleImputer(strategy='median'),
+                                 ['Delivery_person_Age',
+                                  'Delivery_person_Ratings',
+                                  'Restaurant_latitude', 'Restaurant_longitude',
+                                  'Delivery_location_latitude',
+                                  'Delivery_location_longitude', 'Time_Orderd',
+                                  'Time_Order_picked', 'Vehicle_condition',
+                                  'multiple_deliveries', 'Order_Day',
+                                  'Order_Month', 'Geo_Distance']),
+                                ('categoric_imputation',
+                                 SimpleImputer(strategy='most_frequent'),
+                                 ['Delivery_person_ID', 'Weather_conditions',
+                                  'Road_traffic_density', 'Type_of_order',
+                                  'Type_of_vehicle', 'Festival', 'City'])])] shelved with identifier [imputer] in shelve_this_preprocessor() at utils.py
+[ 2023-05-14 12:29:52,560 ] 216 root - INFO: imputation completed at utils.py, train_shape:(25061, 20), test_shape: (10757, 20)
+ number of train columns with null values [0], number of test columns with null values [0]
+[ 2023-05-14 12:29:52,560 ] 247 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils.py] line no. [222] with message [name 'LableEncoder' is not defined]
+[ 2023-05-14 12:29:52,560 ] 58 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\components\data_transformation.py] line no. [52] with message [Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils.py] line no. [222] with message [name 'LableEncoder' is not defined]]

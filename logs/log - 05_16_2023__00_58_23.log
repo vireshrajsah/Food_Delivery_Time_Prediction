@@ -1,0 +1,24 @@
+[ 2023-05-16 00:58:24,750 ] 22 root - INFO: PREDICTION PIPELINE INITIATED
+[ 2023-05-16 00:58:24,757 ] 26 root - INFO: INPUT OBTAINED AS [{'ID': 0, 'Delivery_person_ID': 'JAPRES06DEL01', 'Delivery_person_Age': 34, 'Delivery_person_Ratings': 3.5, 'Restaurant_latitude': 26.911927, 'Restaurant_longitude': 75.797282, 'Delivery_location_latitude': 26.951927, 'Delivery_location_longitude': 75.837282, 'Order_Date': '2/4/2022', 'Time_Orderd': '19:20', 'Time_Order_picked': '19:25', 'Weather_conditions': 'Stormy', 'Road_traffic_density': 'Medium', 'Vehicle_condition': 0, 'Type_of_order': 'Meal', 'Type_of_vehicle': 'scooter', 'multiple_deliveries': 1.0, 'Festival': 'Yes', 'City': 'Metropolitan'}]
+[ 2023-05-16 00:58:24,758 ] 19 root - INFO: Input values ingestion INITIATED
+[ 2023-05-16 00:58:24,759 ] 23 root - INFO: input dictionary loaded as a dataframe
+[ 2023-05-16 00:58:24,759 ] 26 root - INFO: CALLING utils for cleaning in Predictor.ingest at prediction.py
+[ 2023-05-16 00:58:24,759 ] 29 root - INFO: df RECEIVED for cleaning in clean() at data_preparation_utils.py, shape: (1, 19)
+[ 2023-05-16 00:58:24,759 ] 31 root - INFO: ID column dropped
+[ 2023-05-16 00:58:24,761 ] 39 root - INFO: Records with faulty time dropped
+[ 2023-05-16 00:58:24,779 ] 41 root - INFO: df cleaning COMPLETE in clean() at data_preparation_utils.py, shape: (1, 18), and returned
+        Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival          City
+values      JAPRES06DEL01                   34                      3.5  ...                  1.0       Yes  Metropolitan
+
+[1 rows x 18 columns]
+[ 2023-05-16 00:58:24,796 ] 28 root - INFO: RECEIVED 
+       Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival          City
+values      JAPRES06DEL01                   34                      3.5  ...                  1.0       Yes  Metropolitan
+
+[1 rows x 18 columns]
+[ 2023-05-16 00:58:24,796 ] 29 root - INFO: RECEIVED input dataframe cleaned, with shape (1, 18)
+[ 2023-05-16 00:58:24,796 ] 32 root - INFO: CALLING utils for feature engineering in Predictor.ingest at prediction.py, shape (1, 18)
+[ 2023-05-16 00:58:24,797 ] 89 root - INFO: df received for Feature engineering, shape: (1, 18) in apply_feature_engineering() at data_preparation_utils.py
+[ 2023-05-16 00:58:24,798 ] 92 root - INFO: Time_Orderd and Time_Order_picked columns converted to hours
+[ 2023-05-16 00:58:24,799 ] 110 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils\data_preparation_utils.py] line no. [94] with message [time data '2/4/2022' does not match format '%d-%m-%Y']
+[ 2023-05-16 00:58:24,799 ] 47 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\components\prediction.py] line no. [33] with message [Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils\data_preparation_utils.py] line no. [94] with message [time data '2/4/2022' does not match format '%d-%m-%Y']]

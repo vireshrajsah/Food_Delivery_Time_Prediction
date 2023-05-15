@@ -1,0 +1,4 @@
+[ 2023-05-14 05:45:44,994 ] 29 root - INFO: Data ingestion initiated in ingest() at data_ingestion.py
+[ 2023-05-14 05:45:44,994 ] 23 root - INFO: filepath received in utils.read_csv
+[ 2023-05-14 05:45:45,183 ] 25 root - INFO: csv read and loaded
+[ 2023-05-14 05:45:45,186 ] 45 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\components\data_ingestion.py] line no. [31] with message ['str' object has no attribute 'shape']

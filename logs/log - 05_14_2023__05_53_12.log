@@ -1,0 +1,39 @@
+[ 2023-05-14 05:53:12,297 ] 29 root - INFO: Data ingestion initiated in ingest() at data_ingestion.py
+[ 2023-05-14 05:53:12,297 ] 24 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\dataset\food_delivery.csv] received in utils.read_csv
+[ 2023-05-14 05:53:12,515 ] 26 root - INFO: csv read and loaded
+[ 2023-05-14 05:53:12,563 ] 31 root - INFO: Input file loaded and returned to ingest() at data_ingestion.py, Dataframe shape: (45584, 20)
+       ID Delivery_person_ID  Delivery_person_Age  Delivery_person_Ratings  ...  multiple_deliveries  Festival           City  Time_taken (min)
+0  0xcdcd      DEHRES17DEL01                 36.0                      4.2  ...                  3.0        No  Metropolitian                46
+1  0xd987      KOCRES16DEL01                 21.0                      4.7  ...                  1.0        No  Metropolitian                23
+2  0x2784     PUNERES13DEL03                 23.0                      4.7  ...                  1.0        No  Metropolitian                21
+3  0xc8b6     LUDHRES15DEL02                 34.0                      4.3  ...                  0.0        No  Metropolitian                20
+4  0xdb64      KNPRES14DEL02                 24.0                      4.7  ...                  1.0        No  Metropolitian                41
+
+[5 rows x 20 columns]
+[ 2023-05-14 05:53:12,616 ] 34 root - INFO: Train_test_split achieved - train shape: [(31908, 20)], test shape [(13676, 20)]
+[ 2023-05-14 05:53:12,616 ] 41 root - INFO: Dataframe Received for saving. Shape: (31908, 20)
+[ 2023-05-14 05:53:13,236 ] 43 root - INFO: Dataframe saved as csv to path - [ C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\train.csv ]
+[ 2023-05-14 05:53:13,236 ] 37 root - INFO: Train csv saved and confirmed from DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 05:53:13,236 ] 41 root - INFO: Dataframe Received for saving. Shape: (13676, 20)
+[ 2023-05-14 05:53:13,422 ] 43 root - INFO: Dataframe saved as csv to path - [ C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\test.csv ]
+[ 2023-05-14 05:53:13,422 ] 39 root - INFO: Test csv saved and confirmed from DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 05:53:13,423 ] 41 root - INFO: Data ingestion completed in DataIngestor.ingest() at data_ingestion.py
+[ 2023-05-14 05:53:13,430 ] 24 root - INFO: transformation INITIATED in Preprocessor.transform() at data_transformation.py
+[ 2023-05-14 05:53:13,430 ] 24 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\train.csv] received in utils.read_csv
+[ 2023-05-14 05:53:13,572 ] 26 root - INFO: csv read and loaded
+[ 2023-05-14 05:53:13,572 ] 24 root - INFO: filepath: [C:\Users\U1143589\Learning\iNeuron\ML\Food_delivery_time\artifacts\test.csv] received in utils.read_csv
+[ 2023-05-14 05:53:13,633 ] 26 root - INFO: csv read and loaded
+[ 2023-05-14 05:53:13,634 ] 29 root - INFO: train and test csv loaded, train shape: (31908, 20), test shape: (13676, 20)
+[ 2023-05-14 05:53:13,634 ] 32 root - INFO: CALLING on utils to clean train and test dfs in Preprocessor.transform() at data_transformation.py, train shape: (31908, 20), test shape: (13676, 20)
+[ 2023-05-14 05:53:13,634 ] 73 root - INFO: df received for cleaning in clean() at utils.py, shape: (31908, 20)
+[ 2023-05-14 05:53:13,643 ] 75 root - INFO: ID column dropped
+[ 2023-05-14 05:53:13,732 ] 83 root - INFO: Records with faulty time dropped
+[ 2023-05-14 05:53:13,733 ] 85 root - INFO: df cleaning complete in clean() at utils.py, shape: (31908, 19), and returned
+[ 2023-05-14 05:53:13,733 ] 73 root - INFO: df received for cleaning in clean() at utils.py, shape: (13676, 20)
+[ 2023-05-14 05:53:13,738 ] 75 root - INFO: ID column dropped
+[ 2023-05-14 05:53:13,778 ] 83 root - INFO: Records with faulty time dropped
+[ 2023-05-14 05:53:13,778 ] 85 root - INFO: df cleaning complete in clean() at utils.py, shape: (13676, 19), and returned
+[ 2023-05-14 05:53:13,778 ] 35 root - INFO: clean train and test dfs RECEIVED in Preprocessor.transform() at data_transformation.py, train shape: (25117, 19), test shape: (10701, 19)
+[ 2023-05-14 05:53:13,779 ] 38 root - INFO: CALLING on utils to Feature Engineer train and test dfs in Preprocessor.transform() at data_transformation.py, train shape: (25117, 19), test shape: (10701, 19)
+[ 2023-05-14 05:53:13,779 ] 154 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils.py] line no. [133] with message [name 'df' is not defined]
+[ 2023-05-14 05:53:13,779 ] 58 root - CRITICAL: Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\components\data_transformation.py] line no. [39] with message [Exception logged from file [c:\users\u1143589\learning\ineuron\ml\food_delivery_time\src\utils.py] line no. [133] with message [name 'df' is not defined]]

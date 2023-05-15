@@ -3,7 +3,12 @@
 conda create -p venv python=="3.8.5"
 ```
 
-# Initialize Git
+# COMMAND TO INITIATE TRAINING
 ```
-git init
+python src\pipelines\training_pipeline.py
+```
+
+# COMMAND TO INITIATE PREDICTION
+```
+python src\pipelines\prediction_pipeline.py
 ```

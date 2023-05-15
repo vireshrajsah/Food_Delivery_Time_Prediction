@@ -21,3 +21,5 @@ setup(
     install_requires = getrequirements(requirements_file_path= os.path.join(os.getcwd(),REQUIREMENTS_FILE_NAME)),
     packages= find_packages()
 )
+
+print("EXECUTED")
